@@ -1,7 +1,7 @@
 ﻿/*
     Jvav Programmer Ver.02w05c Snapshot
     By 30266
-    Compilation time 2020-04-16 17:00
+    Compilation time 2020-04-16 21:00
 */
 #include <iostream>
 #include<fstream>
@@ -15,13 +15,12 @@ int main()
     string command, type, inputcharacter;
     language = "English";
     cout << "Configuring the online update service...\n";
-    system("del upgrade.class");
-    system("javac upgrade.java");
     system("del upgrade.txt");
     system("cls");
     /*en_main*/
+    en_main:
     cout << "--------------------------------------------\n";
-    cout << "| Jvav Program                Ver.1.2 Pre1 |\n";
+    cout << "| Jvav Program                Ver.1.2 Pre2 |\n";
     cout << "| By Dr.ZhangHaoYang      Programmer 30266 |\n";
     cout << "| Enter'help'to get help!                  |\n";
     cout << "| Online push updates are now supported!   |\n";
@@ -53,7 +52,7 @@ main:
         goto main;
     }
     else if (command == "info") {
-        cout << "Jvav Programm Ver.1.2 Pre1\nIt's just a joke, but we still make it, and the joke was first brought by Zhang Haoyang.\nThe person writing the program is 30266.\nThis release fixes translation errors and adds an online detection update feature.\nCompilation was completed on April 16, 2020, 17:00.\n";
+        cout << "Jvav Programm Ver.1.2 Pre1\nIt's just a joke, but we still make it, and the joke was first brought by Zhang Haoyang.\nThis version supports running away from jdk.\nThe person writing the program is 30266.\n";
         goto main;
     }
     else if (command == "input") {
@@ -90,7 +89,7 @@ main:
 ch:
     language = "简体中文";
     cout << "--------------------------------------------\n";
-    cout << "| Jvav编译器             版本：1.2 预览版1 |\n";
+    cout << "| Jvav编译器             版本：1.2 预览版2 |\n";
     cout << "| 作者：张浩洋大师           编写者：30266 |\n";
     cout << "| 通过输入'帮助'来获得帮助                 |\n";
     cout << "| 现已支持在线推送更新！                   |\n";
@@ -127,7 +126,7 @@ cn_main:
         goto cn_main;
     }
     else if (命令 == "关于") {
-        cout << "Jvav编程器，版本为1.2预览版1。\n这只是一个梗，但是我们依然把它变成了现实。最早是张浩洋提出的这个梗。\n该版本修复了翻译错误问题并增加了在线检测更新功能。\n该程序编写者为30266。\n编译完成于2020年04月16日，17时00分。\n";
+        cout << "Jvav编程器，版本为1.2预览版1。\n这只是一个梗，但是我们依然把它变成了现实。最早是张浩洋提出的这个梗。\n该版本支持脱离jdk的运行。\n该程序编写者为30266。\n";
         goto cn_main;
     }
     else if (命令 == "更新") {
@@ -143,14 +142,8 @@ cn_main:
         }
         else if (语言 == "English") {
             system("cls");
-            cout << "--------------------------------------------\n";
-            cout << "| Jvav Program                Ver.1.2 Pre1 |\n";
-            cout << "| By Dr.ZhangHaoYang      Programmer 30266 |\n";
-            cout << "| Enter'help'to get help!                  |\n";
-            cout << "| Online push updates are now supported!   |\n";
-            cout << "--------------------------------------------\n";
             language = "English";
-            goto main;
+            goto en_main;
         }
         else {
             cout << "未知的语言。\n";
@@ -163,7 +156,7 @@ cn_main:
     }
 /*upgrade*/
     upgrade:
-    system("java upgrade > upgrade.txt");
+    system("java -jar upgrade.jar > upgrade.txt");
     ifstream readFile("upgrade.txt");
     int ret;
     readFile >> ret;
@@ -178,7 +171,7 @@ cn_main:
             goto cn_main;
         }
     }
-    else if (ret > 4) {
+    else if (ret > 6) {
         if (language == "English") {
             cout << "Jvav>upgrade>Updated versionavailable for upgrades, please go to https://30266-official.github.io/updates/Jvav.zip download!\n";
             goto main;
@@ -188,7 +181,7 @@ cn_main:
             goto cn_main;
         }
     }
-    else if (ret == 4) {
+    else if (ret == 6) {
         if (language == "English") {
             cout << "Congratulations! You've upgraded to the latest version!\n";
             goto main;
